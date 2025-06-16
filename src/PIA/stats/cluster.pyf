@@ -1,0 +1,21 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module cluster ! in
+    interface  ! in :cluster
+        subroutine kmeans(n,k,r,x,m,th,maxit,c,l) ! in :cluster:cluster.f90
+            integer, optional,intent(in),check(shape(x,0)==n),depend(x) :: n=shape(x,0)
+            integer, optional,intent(in),check(shape(m,0)==k),depend(m) :: k=shape(m,0)
+            integer, optional,intent(in),check(shape(x,1)==r),depend(x) :: r=shape(x,1)
+            real dimension(n,r),intent(in) :: x
+            real dimension(k,r),intent(in),depend(r) :: m
+            real, optional,intent(in) :: th=11.0
+            integer, optional,intent(in) :: maxit=1000
+            real dimension(k,r),intent(out),depend(k,r) :: c
+            integer dimension(n),intent(out),depend(n) :: l
+        end subroutine kmeans
+    end interface
+end python module cluster
+
+! This file was auto-generated with f2py (version:1.21.5).
+! See http://cens.ioc.ee/projects/f2py2e/

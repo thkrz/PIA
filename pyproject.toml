@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "PIA"
+dynamic = ["version"]
+readme = "README.md"
+license-files = { paths = ["LICENSE"] }
+authors = [
+  { name = "Thomas Kreuzer", email = "thomas.kreuzer@rwth-aachen.de" },
+]
+
+[project.scripts]
+pia = "PIA:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/PIA"]
+
+[tool.hatch.version]
+path = "..."
